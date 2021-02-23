@@ -1,39 +1,63 @@
 # generic-print
-Convenient generic print() for C
+Convenient generic `print()` for C
 
-Other languages have nice print/log/write functions but in C you are at mercy of inconvenient `printf(format...)`. It took me an entire day reading C documentation and playing with ideas to implement this. The trick was to use builtins that check types, variadic macros and variable array initializers.
+Nice generic print inspired byt Python/JavaScript and other high-level languages.
 
-Just `#include "print.h"` and use `print()`.
+All code is in `print.h` [raw download](https://raw.githubusercontent.com/exebook/generic-print/main/print.h)
 
-#include "print.h"
+Just `#include "print.h"` and start using `print()`.
 
 ```c
-int main() {
-	// basic usage
 	print("number:", 25, "fractional number:", 1.2345, "expression:", (2.0 + 5) / 3);
+```
+##### output
 
-	// variables can be passed
+```c
+	number: 25 fractional number: 1.2345 expression: 2.33333
+```
+
+Passing variables of various primitive types:
+```c
 	char *s = "abc";
 	void *p = main;
 	long l = 1234567890123456789;
 	print("string:", s, "pointer:", p, "long:", l);
+```
+##### output
+```c
+string: "abc" pointer: 0x401745 long: 1234567890123456789
+```
 
-	// some basic C arrays are supported
+Primitive array support:
+```c
 	int x[] = { 1, 2, 3 };
 	char *args[] = { "gcc", "hello.c", "-o", "hello" };
 	print(x, args);
+```
+##### output
+```c
+[1 2 3] ["gcc" "hello.c" "-o" "hello"]
+```
 
-	// char/byte are handled with extra love
+Extra love for byte/char:
+```c
 	unsigned char byte = 222;
 	char ch = 'A';
 	print(byte, ch)
-
-	// you can setup your own colors
-	// arguments are: (normal, number, string, hex, fractional)
-	// defaults are (-1, 4, 1, 2, 5)
-	__print_setup_colors(249,236,239,244,232);
-
-	// or disable colors completely
-	__print_enable_color = 0;
-}
 ```
+##### output
+```c
+222<0xDE> 'A'65
+```
+
+You can setup your own colors, arguments are: `(normal, number, string, hex, fractional)`, defaults are `(-1, 4, 1, 2, 5)`.
+```c
+	__print_setup_colors(249,236,239,244,232);
+```
+Disabling colors completely:
+```c
+	__print_enable_color = 0;
+```
+
+The implementation is based on builtins that check types, variadic macros abuse and variable array initializers.
+
