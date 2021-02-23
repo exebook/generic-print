@@ -1,27 +1,27 @@
 # generic-print
-Convenient generic `print()` for C
+Convenient generic `print()` for C.
 
 Nice generic print inspired byt Python/JavaScript and other high-level languages.
 
-All code is in `print.h` [raw download](https://raw.githubusercontent.com/exebook/generic-print/main/print.h)
+All code is in `print.h` [raw download](https://raw.githubusercontent.com/exebook/generic-print/main/print.h).
 
 Just `#include "print.h"` and start using `print()`.
 
 ```c
-	print("number:", 25, "fractional number:", 1.2345, "expression:", (2.0 + 5) / 3);
+print("number:", 25, "fractional number:", 1.2345, "expression:", (2.0 + 5) / 3);
 ```
 ##### output
 
 ```c
-	number: 25 fractional number: 1.2345 expression: 2.33333
+number: 25 fractional number: 1.2345 expression: 2.33333
 ```
 
 Passing variables of various primitive types:
 ```c
-	char *s = "abc";
-	void *p = main;
-	long l = 1234567890123456789;
-	print("string:", s, "pointer:", p, "long:", l);
+char *s = "abc";
+void *p = main;
+long l = 1234567890123456789;
+print("string:", s, "pointer:", p, "long:", l);
 ```
 ##### output
 ```c
@@ -30,9 +30,9 @@ string: "abc" pointer: 0x401745 long: 1234567890123456789
 
 Primitive array support:
 ```c
-	int x[] = { 1, 2, 3 };
-	char *args[] = { "gcc", "hello.c", "-o", "hello" };
-	print(x, args);
+int x[] = { 1, 2, 3 };
+char *args[] = { "gcc", "hello.c", "-o", "hello" };
+print(x, args);
 ```
 ##### output
 ```c
@@ -41,9 +41,9 @@ Primitive array support:
 
 Extra love for byte/char:
 ```c
-	unsigned char byte = 222;
-	char ch = 'A';
-	print(byte, ch)
+unsigned char byte = 222;
+char ch = 'A';
+print(byte, ch)
 ```
 ##### output
 ```c
