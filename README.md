@@ -12,10 +12,6 @@ print("number:", 25, "fractional number:", 1.2345, "expression:", (2.0 + 5) / 3)
 > 
 > output
 
-> ![Screenshot of the demo.c](https://raw.githubusercontent.com/exebook/generic-print/main/screenshot2.png)
-> 
-> Screenshot of the [`demo.c`](https://github.com/exebook/generic-print/blob/main/demo.c)
-
 Passing variables of various primitive types:
 ```c
 char *s = "abc";
