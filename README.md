@@ -1,7 +1,7 @@
 # generic-print
-Convenient generic `print()` for C.
+Convenient generic `print()` for **C**.
 
-Nice generic print inspired byt Python/JavaScript and other high-level languages.
+Nice generic print inspired byt **Python**/**JavaScript** and other high-level languages.
 
 All code is in single no dependency header `print.h` [raw download](https://raw.githubusercontent.com/exebook/generic-print/main/print.h).
 
@@ -15,7 +15,8 @@ print("number:", 25, "fractional number:", 1.2345, "expression:", (2.0 + 5) / 3)
 number: 25 fractional number: 1.2345 expression: 2.33333
 ```
 
-![Vintage screenshot taken with CoolRetroTerm](https://raw.githubusercontent.com/exebook/generic-print/main/screenshot.png)
+> ![Vintage screenshot taken with CoolRetroTerm](https://raw.githubusercontent.com/exebook/generic-print/main/screenshot.png)
+> Vintage screenshot taken with CoolRetroTerm
 
 Passing variables of various primitive types:
 ```c
@@ -62,9 +63,9 @@ __print_enable_color = 0;
 
 The implementation is based on builtins that check types, variadic macros abuse and variable array initializers.
 
-Tested on Ubuntu 20.04 x86_64, GCC 9.3.0, Clang 10.0.0-4, TinyC 0.9.27.
+Tested on **Ubuntu** `20.04` `x86_64`, **GCC** `9.3.0`, **Clang** `10.0.0-4`, **TinyC** `0.9.27`.
 
-May not work on 32-bit systems, was not tested with Microsoft C compiler, was not tested on Mac.
+May **not** work on `32`-bit systems, was not tested with **Microsoft C Compiler**, was not tested on **Mac**.
 
 
 
