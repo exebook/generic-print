@@ -15,6 +15,8 @@ print("number:", 25, "fractional number:", 1.2345, "expression:", (2.0 + 5) / 3)
 number: 25 fractional number: 1.2345 expression: 2.33333
 ```
 
+![Vintage screenshot taken with CoolRetroTerm](https://raw.githubusercontent.com/exebook/generic-print/main/screenshot.png)
+
 Passing variables of various primitive types:
 ```c
 char *s = "abc";
