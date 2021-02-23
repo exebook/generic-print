@@ -9,6 +9,7 @@ print("number:", 25, "fractional number:", 1.2345, "expression:", (2.0 + 5) / 3)
 ```
 
 > output
+> 
 > ![output](https://raw.githubusercontent.com/exebook/generic-print/main/output-demo1.png)
 
 Passing variables of various primitive types:
@@ -19,6 +20,7 @@ long l = 1234567890123456789;
 print("string:", s, "pointer:", p, "long:", l);
 ```
 > output
+> 
 > ![output](https://raw.githubusercontent.com/exebook/generic-print/main/output-demo2.png)
 
 Primitive array support:
@@ -28,6 +30,7 @@ char *args[] = { "gcc", "hello.c", "-o", "hello" };
 print(x, args);
 ```
 > output
+> 
 > ![output](https://raw.githubusercontent.com/exebook/generic-print/main/output-demo3.png)
 
 Extra information for byte/char:
@@ -37,6 +40,7 @@ char ch = 'A';
 print(byte, ch)
 ```
 > output
+> 
 > ![output](https://raw.githubusercontent.com/exebook/generic-print/main/output-demo4.png)
 
 You can setup your own colors, arguments are: `(normal, number, string, hex, fractional)`, defaults are `(-1, 4, 1, 2, 5)`.
