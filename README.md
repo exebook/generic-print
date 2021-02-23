@@ -3,14 +3,11 @@ Convenient generic `print()` for **C**.
 
 Nice generic print inspired byt **Python**/**JavaScript** and other high-level languages.
 
-All code is in single no dependency header [`print.h`](https://github.com/exebook/generic-print/blob/main/print.h).
-
 ```c
 #include "print.h"
 print("number:", 25, "fractional number:", 1.2345, "expression:", (2.0 + 5) / 3);
 ```
 -------
-
 ```c
 number: 25 fractional number: 1.2345 expression: 2.33333
 ```
@@ -61,6 +58,8 @@ Disabling colors completely:
 ```c
 __print_enable_color = 0;
 ```
+
+All code is in single no dependency header [`print.h`](https://github.com/exebook/generic-print/blob/main/print.h).
 
 The implementation is based on builtins that check types, variadic macros abuse and variable array initializers.
 
