@@ -67,5 +67,3 @@ Tested on **Ubuntu** `20.04` `x86_64`, **GCC** `9.3.0`, **Clang** `10.0.0-4`, **
 
 May **not** work on `32`-bit systems, was not tested with **Microsoft C Compiler**, was not tested on **Mac**.
 
-
-
