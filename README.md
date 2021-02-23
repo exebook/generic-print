@@ -7,10 +7,10 @@ Nice generic print inspired byt **Python**/**JavaScript** and other high-level l
 #include "print.h"
 print("number:", 25, "fractional number:", 1.2345, "expression:", (2.0 + 5) / 3);
 ```
--------
-```c
-number: 25 fractional number: 1.2345 expression: 2.33333
-```
+
+> ![output](https://raw.githubusercontent.com/exebook/generic-print/main/output-demo1.png)
+> 
+> output
 
 > ![Screenshot of the demo.c](https://raw.githubusercontent.com/exebook/generic-print/main/screenshot2.png)
 > 
