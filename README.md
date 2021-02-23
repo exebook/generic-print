@@ -3,7 +3,7 @@ Convenient generic `print()` for **C**.
 
 Nice generic print inspired byt **Python**/**JavaScript** and other high-level languages.
 
-All code is in single no dependency header `print.h` [raw download](https://raw.githubusercontent.com/exebook/generic-print/main/print.h).
+All code is in single no dependency header `print.h` [*raw download*](https://raw.githubusercontent.com/exebook/generic-print/main/print.h).
 
 ```c
 #include "print.h"
@@ -15,8 +15,9 @@ print("number:", 25, "fractional number:", 1.2345, "expression:", (2.0 + 5) / 3)
 number: 25 fractional number: 1.2345 expression: 2.33333
 ```
 
-> ![Vintage screenshot taken with CoolRetroTerm](https://raw.githubusercontent.com/exebook/generic-print/main/screenshot.png)
-> Vintage screenshot taken with CoolRetroTerm
+> ![Screenshot of the demo.c](https://raw.githubusercontent.com/exebook/generic-print/main/screenshot2.png)
+> 
+> Screenshot of the [`demo.c`](https://raw.githubusercontent.com/exebook/generic-print/main/demo.c)
 
 Passing variables of various primitive types:
 ```c
