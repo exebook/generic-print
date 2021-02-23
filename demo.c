@@ -1,13 +1,5 @@
-# generic-print
-Convenient generic print() for C
-
-Other languages have nice print/log/write functions but in C you are at mercy of inconvenient `printf(format...)`. It took me an entire day reading C documentation and playing with ideas to implement this. The trick was to use builtins that check types, variadic macros and variable array initializers.
-
-Just `#include "print.h"` and use `print()`.
-
 #include "print.h"
 
-```c
 int main() {
 	// basic usage
 	print("number:", 25, "fractional number:", 1.2345, "expression:", (2.0 + 5) / 3);
@@ -36,4 +28,3 @@ int main() {
 	// or disable colors completely
 	__print_enable_color = 0;
 }
-```
