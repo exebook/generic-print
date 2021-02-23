@@ -9,7 +9,7 @@ All code is in single no dependency header [`print.h`](https://github.com/exeboo
 #include "print.h"
 print("number:", 25, "fractional number:", 1.2345, "expression:", (2.0 + 5) / 3);
 ```
-##### output
+-------
 
 ```c
 number: 25 fractional number: 1.2345 expression: 2.33333
