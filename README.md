@@ -3,6 +3,8 @@ Convenient generic `print()` for **C**.
 
 Nice generic print inspired byt **Python**/**JavaScript** and other high-level languages.
 
+> *Still using `printf("%i\n", result)` for debugging?*
+
 ```c
 #include "print.h"
 print("number:", 25, "fractional number:", 1.2345, "expression:", (2.0 + 5) / 3);
