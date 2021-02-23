@@ -1,7 +1,5 @@
 # generic-print
-Convenient generic `print()` for **C**.
-
-Nice generic print inspired byt **Python**/**JavaScript** and other high-level languages.
+Convenient generic `print()` for **C** inspired byt **Python**/**JavaScript** and other high-level languages.
 
 > *Still using `printf("%i\n", result)` for debugging?*
 
