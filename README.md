@@ -3,11 +3,10 @@ Convenient generic `print()` for C.
 
 Nice generic print inspired byt Python/JavaScript and other high-level languages.
 
-All code is in `print.h` [raw download](https://raw.githubusercontent.com/exebook/generic-print/main/print.h).
-
-Just `#include "print.h"` and start using `print()`.
+All code is in single no dependency header `print.h` [raw download](https://raw.githubusercontent.com/exebook/generic-print/main/print.h).
 
 ```c
+#include "print.h"
 print("number:", 25, "fractional number:", 1.2345, "expression:", (2.0 + 5) / 3);
 ```
 ##### output
@@ -52,12 +51,18 @@ print(byte, ch)
 
 You can setup your own colors, arguments are: `(normal, number, string, hex, fractional)`, defaults are `(-1, 4, 1, 2, 5)`.
 ```c
-	__print_setup_colors(249,236,239,244,232);
+__print_setup_colors(249,236,239,244,232);
 ```
 Disabling colors completely:
 ```c
-	__print_enable_color = 0;
+__print_enable_color = 0;
 ```
 
 The implementation is based on builtins that check types, variadic macros abuse and variable array initializers.
+
+Tested on Ubuntu 20.04 x86_64, GCC 9.3.0, Clang 10.0.0-4, TinyC 0.9.27.
+
+May not work on 32-bit systems, was not tested with Microsoft C compiler, was not tested on Mac.
+
+
 
