@@ -23,10 +23,9 @@ void *p = main;
 long l = 1234567890123456789;
 print("string:", s, "pointer:", p, "long:", l);
 ```
-##### output
-```c
-string: "abc" pointer: 0x401745 long: 1234567890123456789
-```
+> ![output](https://raw.githubusercontent.com/exebook/generic-print/main/output-demo2.png)
+> 
+> output
 
 Primitive array support:
 ```c
@@ -34,21 +33,19 @@ int x[] = { 1, 2, 3 };
 char *args[] = { "gcc", "hello.c", "-o", "hello" };
 print(x, args);
 ```
-##### output
-```c
-[1 2 3] ["gcc" "hello.c" "-o" "hello"]
-```
+> ![output](https://raw.githubusercontent.com/exebook/generic-print/main/output-demo3.png)
+> 
+> output
 
-Extra love for byte/char:
+Extra information for byte/char:
 ```c
 unsigned char byte = 222;
 char ch = 'A';
 print(byte, ch)
 ```
-##### output
-```c
-222<0xDE> 'A'65
-```
+> ![output](https://raw.githubusercontent.com/exebook/generic-print/main/output-demo4.png)
+> 
+> output
 
 You can setup your own colors, arguments are: `(normal, number, string, hex, fractional)`, defaults are `(-1, 4, 1, 2, 5)`.
 ```c
