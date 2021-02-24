@@ -60,5 +60,5 @@ Tested on **Ubuntu** `20.04` `x86_64`, **GCC** `9.3.0`, **Clang** `10.0.0-4`, **
 
 Tested on **macOS** `11.2` `arm64` with **Apple Clang** `12.0.0`.
 
-May **not** work on `32`-bit systems, was not tested with **Microsoft C Compiler**.
+May **not** work on `32`-bit systems. Does **not** work with **Microsoft C Compiler**.
 
