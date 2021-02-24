@@ -58,5 +58,7 @@ The implementation is based on builtins that check types, variadic macros abuse 
 
 Tested on **Ubuntu** `20.04` `x86_64`, **GCC** `9.3.0`, **Clang** `10.0.0-4`, **TinyC** `0.9.27`.
 
-May **not** work on `32`-bit systems, was not tested with **Microsoft C Compiler**, was not tested on **Mac**.
+Tested on **macOS** `11.2` `arm64` with **Apple Clang** `12.0.0`.
+
+May **not** work on `32`-bit systems, was not tested with **Microsoft C Compiler**.
 
