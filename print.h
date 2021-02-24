@@ -33,7 +33,7 @@ void __print_color(int a) {
 #define __print_cast(x) (__print_type_expr(x) | (sizeof(x) << 8))
 
 #define __print_array(T, qual, color) \
-	__print_color(color); \
+	__print_color(__print_color_normal); \
 	int max_len = 16; \
 	int n = size/sizeof(T); \
 	T *m = va_arg(v, T*); \
