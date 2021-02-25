@@ -9,29 +9,6 @@ void __print_color(int a) {
 	else printf("\x1b[38;5;%im", a);
 }
 
-#define __print_type_expr(x) \
-	__builtin_choose_expr(__builtin_types_compatible_p(typeof(x), double), 'd', \
-	__builtin_choose_expr(__builtin_types_compatible_p(typeof(x), float), 'd', \
-	__builtin_choose_expr(__builtin_types_compatible_p(typeof(x), char), 'c', \
-	__builtin_choose_expr(__builtin_types_compatible_p(typeof(x), unsigned char), 'b', \
-	__builtin_choose_expr(__builtin_types_compatible_p(typeof(x), int), 'i', \
-	__builtin_choose_expr(__builtin_types_compatible_p(typeof(x), unsigned int), 'u', \
-	__builtin_choose_expr(__builtin_types_compatible_p(typeof(x), long), 'l', \
-	__builtin_choose_expr(__builtin_types_compatible_p(typeof(x), unsigned long), 'L', \
-	__builtin_choose_expr(__builtin_types_compatible_p(typeof(x), short), 'i', \
-	__builtin_choose_expr(__builtin_types_compatible_p(typeof(x), char*), 's', \
-	__builtin_choose_expr(__builtin_types_compatible_p(typeof(x), char[]), 'S', \
-	__builtin_choose_expr(__builtin_types_compatible_p(typeof(x), void*), 'p', \
-	__builtin_choose_expr(__builtin_types_compatible_p(typeof(x), int[]), 'I', \
-	__builtin_choose_expr(__builtin_types_compatible_p(typeof(x), unsigned int[]), 'U', \
-	__builtin_choose_expr(__builtin_types_compatible_p(typeof(x), short[]), 'H', \
-	__builtin_choose_expr(__builtin_types_compatible_p(typeof(x), unsigned short[]), 'h', \
-	__builtin_choose_expr(__builtin_types_compatible_p(typeof(x), char*[]), 'C', \
-	__builtin_choose_expr(sizeof(x) == sizeof(void*), 'p', \
-	'?'))))))))))))))))))
-
-#define __print_cast(x) (__print_type_expr(x) | (sizeof(x) << 8))
-
 #define __print_array(T, qual, color) \
 	__print_color(__print_color_normal); \
 	int max_len = 16; \
@@ -61,36 +38,36 @@ void __print_setup_colors(int normal, int number, int string, int hex, int fract
 	__print_color_float = fractional;
 }
 
-void __print_func (int count, short types[], ...) {
+void __print_func (int count, unsigned short types[], ...) {
 	va_list v;
 	va_start(v, types);
 	#ifdef __print_DEBUG
 	printf("args[%i]: ", count);
 	for (int i = 0; i < count; i++) {
-		char type = types[i] & 0xFF;
-		char size = types[i] >> 8;
+		char type = types[i] & 0x1F;
+		char size = types[i] >> 5;
 		if (i > 0) printf(" ");
-		printf("%c[%i]", type, size);
+		printf("%i[%i]", type, size);
 	}
 	printf("\n");
 	#endif // __print_DEBUG
 
 	for (int i = 0; i < count; i++) {
 		if (i > 0) printf(" ");
-		char type = types[i] & 0xFF;
-		char size = types[i] >> 8;
-		if (type == 'd') {
+		char type = types[i] & 0x1F;
+		char size = types[i] >> 5;
+		if (type == 1) {
 			__print_color(__print_color_float);
 			double d = va_arg(v, double);
 			printf("%'G", d);
 		}
-		else if (type == 'c') {
+		else if (type == 2) {
 			__print_color(__print_color_string);
 			char c = va_arg(v, int);
 			printf("'%c'", c); __print_color(__print_color_number);
 			printf("%i", (int)c);
 		}
-		else if (type == 'b') {
+		else if (type == 3) {
 			__print_color(__print_color_number);
 			char c = va_arg(v, int);
 			printf("%i", (unsigned char)c);
@@ -101,47 +78,47 @@ void __print_func (int count, short types[], ...) {
 			__print_color(__print_color_normal);
 			printf(">");
 		}
-		else if (type == 'i') {
+		else if (type == 4) {
 			__print_color(__print_color_number);
 			printf("%'i", va_arg(v, int));
 		}
-		else if (type == 'u') {
+		else if (type == 5) {
 			__print_color(__print_color_number);
 			printf("%'u", va_arg(v, int));
 		}
-		else if (type == 'l') {
+		else if (type == 6) {
 			__print_color(__print_color_number);
 			printf("%'li", va_arg(v, unsigned long));
 		}
-		else if (type == 'L') {
+		else if (type == 7) {
 			__print_color(__print_color_number);
 			printf("%'lu", va_arg(v, long));
 		}
-		else if (type == 's') {
+		else if (type == 8) {
 			__print_color(__print_color_string);
 			printf("\"%s\"", va_arg(v, char*));
 		}
-		else if (type == 'S') {
+		else if (type == 9) {
 			__print_color(__print_color_normal);
 			printf("%s", va_arg(v, char*));
 		}
-		else if (type == 'p') {
+		else if (type == 10) {
 			__print_color(__print_color_hex);
 			printf("%p", va_arg(v, void*));
 		}
-		else if (type == 'I') {
+		else if (type == 11) {
 			__print_array(int, "%i", __print_color_number);
 		}
-		else if (type == 'U') {
+		else if (type == 12) {
 			__print_array(unsigned int, "%u", __print_color_number);
 		}
-		else if (type == 'H') {
+		else if (type == 13) {
 			__print_array(short, "%i", __print_color_number);
 		}
-		else if (type == 'h') {
+		else if (type == 14) {
 			__print_array(unsigned short, "%i", __print_color_number);
 		}
-		else if (type == 'C') {
+		else if (type == 15) {
 			__print_array(char*, "\"%s\"", __print_color_string);
 		}
 		else {
@@ -149,20 +126,46 @@ void __print_func (int count, short types[], ...) {
 		}
 	}
 	va_end(v);
+	__print_color(-1);
 	printf("\n");
 }
 
-#define __print_cast_list(q,w,e,r,t,y,u,i,o,p,a,s,d,f,g,h,j,k,l,z,x,c,v,b,n,m,...) (short[]){\
-	__print_cast(q),__print_cast(w),__print_cast(e),__print_cast(r),\
-	__print_cast(t),__print_cast(y),__print_cast(u),__print_cast(i),\
-	__print_cast(o),__print_cast(p),__print_cast(a),__print_cast(s),\
-	__print_cast(d),__print_cast(f),__print_cast(g),__print_cast(h),\
-	__print_cast(j),__print_cast(k),__print_cast(l),__print_cast(z),\
-	__print_cast(x),__print_cast(c),__print_cast(v),__print_cast(b),\
-	__print_cast(n),__print_cast(m)\
-}
-#define __print_count26(q,w,e,r,t,y,u,i,o,p,a,s,d,f,g,h,j,k,l,z,x,c,v,b,n,m,...) m
+#define __print_typeid(a) \
+	__builtin_choose_expr(__print_is_type(a, double), 1, \
+	__builtin_choose_expr(__print_is_type(a, float), 1, \
+	__builtin_choose_expr(__print_is_type(a, char), 2, \
+	__builtin_choose_expr(__print_is_type(a, unsigned char), 3, \
+	__builtin_choose_expr(__print_is_type(a, int), 4, \
+	__builtin_choose_expr(__print_is_type(a, unsigned int), 5, \
+	__builtin_choose_expr(__print_is_type(a, long), 6, \
+	__builtin_choose_expr(__print_is_type(a, unsigned long), 7, \
+	__builtin_choose_expr(__print_is_type(a, short), 4, \
+	__builtin_choose_expr(__print_is_type(a, char*), 8, \
+	__builtin_choose_expr(__print_is_type(a, char[]), 9, \
+	__builtin_choose_expr(__print_is_type(a, void*), 10, \
+	__builtin_choose_expr(__print_is_type(a, int[]), 11, \
+	__builtin_choose_expr(__print_is_type(a, unsigned int[]), 12, \
+	__builtin_choose_expr(__print_is_type(a, short[]), 13, \
+	__builtin_choose_expr(__print_is_type(a, unsigned short[]), 14, \
+	__builtin_choose_expr(__print_is_type(a, char*[]), 15, \
+	0)))))))))))))))))
 
-#define print(a...) \
-	__print_func(__print_count26(a,25,24,23,22,21,20,19,18,17,16,15,14,13,12,11,10,9,8,7,6,5,4,3,2,1,0),\
-	__print_cast_list(a,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1), a);
+#define __print_push(c,size,cont) (cont, *--_p = c | (size << 5))
+#define __builtin_choose_expr __builtin_choose_expr
+#define __print_is_type(a, t) __builtin_types_compatible_p(typeof(a), t)
+#define __print_count_int(q,w,e,r,t,y,u,i,o,p,a,s,d,f,g,h,j,k,l,z,x,c,v,b,n,m,...) m
+#define __print_count(a...)__print_count_int(a,25,24,23,22,21,20,19,18,17,16,15,14,13,12,11,10,9,8,7,6,5,4,3,2,1,0)
+
+#define __print_code(a, cont) __builtin_choose_expr(__print_is_type(a, void), 0, __print_push(__print_typeid(a), (sizeof(a)<(1<<16>>5)?sizeof(a):(1<<16>>5)-1), cont))
+
+#define __print_types_int(q,w,e,r,t,y,u,i,o,p,a,s,d,f,g,h,j,k,l,z,x,c,v,b,n,m,...)__print_code(q,__print_code(w,__print_code(e,__print_code(r,__print_code(t,__print_code(y,__print_code(u,__print_code(i,__print_code(o,__print_code(p,__print_code(a,__print_code(s,__print_code(d,__print_code(f,__print_code(g,__print_code(h,__print_code(j,__print_code(k,__print_code(l,__print_code(z,__print_code(x,__print_code(c,__print_code(v,__print_code(b,__print_code(n,__print_code(m, 0))))))))))))))))))))))))))
+
+#define __print_types(a...) __print_types_int(a, (void)0,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1)
+
+#define print(a...)({ \
+	int count = __print_count(a); \
+	unsigned short stack[count], *_p = stack + count; \
+	__print_types(a); \
+	__print_func(count, _p, a); \
+});
+
