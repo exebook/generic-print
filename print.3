@@ -1,0 +1,29 @@
+.\" generated with Ronn/v0.7.3
+.\" http://github.com/rtomayko/ronn/tree/0.7.3
+.
+.TH "PRINT" "3" "February 2021" "exebook/generic-print" ""
+print(\.\.\.) \- generic print for C
+.
+.nf
+
+#include "print\.h"
+print("number:", 25, "fractional number:", 1\.2345, "expression:", (2\.0 + 5) / 3);
+
+// variables can be passed
+char *s = "abc";
+void *p = main;
+long l = 1234567890123456789;
+print("string:", s, "pointer:", p, "long:", l);
+
+// some basic C arrays are supported
+int x[] = { 1, 2, 3 };
+char *args[] = { "gcc", "hello\.c", "\-o", "hello" };
+print(x, args);
+
+// char/byte are handled with extra love
+unsigned char byte = 222;
+char ch = \'A\';
+print(byte, ch)
+.
+.fi
+\fBprint(\.\.\.)\fR prints max\. 25 arguments according to its types to stdout, with color support\. Disable coloring with \fB__print_enable_color = 0;\fRprintf(3)
