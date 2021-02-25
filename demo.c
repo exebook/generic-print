@@ -20,6 +20,8 @@ int main() {
 	char ch = 'A';
 	print(byte, ch)
 
+	fprint(stderr, "Warning:", byte, ch)
+
 	// you can setup your own colors
 	// arguments are: (normal, number, string, hex, fractional)
 	// defaults are (-1, 4, 1, 2, 5)
