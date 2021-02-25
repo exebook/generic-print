@@ -24,6 +24,14 @@ print(x, args);
 unsigned char byte = 222;
 char ch = \'A\';
 print(byte, ch)
+
+fprint(stderr, "Warning:", s, "pointer:", p, "long:", l);
 .
 .fi
-\fBprint(\.\.\.)\fR prints max\. 25 arguments according to its types to stdout, with color support\. Disable coloring with \fB__print_enable_color = 0;\fRprintf(3)
+\fBprint(\.\.\.)\fR prints max\. 25 arguments according to its types to stdout, with color support\.
+.
+.P
+\fBfprint(fh, \.\.\.)\fR prints max\. 25 arguments according to its types to its first FILE* argument, with color support\.
+.
+.P
+Disable coloring with \fB__print_enable_color = 0;\fRprintf(3)
