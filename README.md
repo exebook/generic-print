@@ -62,3 +62,14 @@ Tested on **macOS** `11.2` `arm64` with **Apple Clang** `12.0.0`.
 
 May **not** work on `32`-bit systems. Does **not** work with **Microsoft C Compiler**.
 
+There is a scary looking macro code, what it compiles to? It is basically optimized out. See what `GCC -O1` has done to `print(42, 43)`, note that all type information bolied down to `0x00840084`, which is type `4` (alias for `int`), size `8` bytes.
+```asm
+xor     eax, eax
+mov     ecx, 43
+mov     edx, 42
+lea     rsi, [rsp+12]
+mov     edi, 2
+mov     DWORD PTR [rsp+12], 0x00840084
+call    __print_func
+```
+
