@@ -1,10 +1,7 @@
-#define __print_DEBUG
-
 #include "print.h"
 
 int main() {
 	// basic usage
-	print(42); return 0;
 	print("number:", 25, "fractional number:", 1.2345, "expression:", (2.0 + 5) / 3);
 
 	// variables can be passed
@@ -23,8 +20,6 @@ int main() {
 	char ch = 'A';
 	print(byte, ch)
 
-	printf(stderr, "Warning:", byte, ch)
-
 	// you can setup your own colors
 	// arguments are: (normal, number, string, hex, fractional)
 	// defaults are (-1, 4, 1, 2, 5)
@@ -32,4 +27,7 @@ int main() {
 
 	// or disable colors completely
 	__print_enable_color = 0;
+
+	// printing to fd is possible with fprintf
+	fprint(stderr, "Warning:", 42)
 }
