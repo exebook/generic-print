@@ -148,7 +148,9 @@ void __print_func (FILE *fd, int count, unsigned short types[], ...) {
 	__builtin_choose_expr(__print_is_type(a, short[]), 13, \
 	__builtin_choose_expr(__print_is_type(a, unsigned short[]), 14, \
 	__builtin_choose_expr(__print_is_type(a, char*[]), 15, \
-	0)))))))))))))))))
+	__builtin_choose_expr(sizeof(a) == 1, 2, \
+	__builtin_choose_expr(sizeof(a) == 2, 4, \
+	(0)  )))))))))))))))))))
 
 #define __print_push(c,size,cont) (cont, *--_p = c | (size << 5))
 #define __builtin_choose_expr __builtin_choose_expr
