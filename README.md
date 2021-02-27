@@ -56,7 +56,7 @@ All code is in single no dependency header [`print.h`](https://github.com/exeboo
 
 The implementation is based on builtins that check types, variadic macros abuse and variable array initializers.
 
-Tested on **Ubuntu** `20.04` `x86_64`, **GCC** `9.3.0`, **Clang** `10.0.0-4`, **TinyC** `0.9.27`.
+Tested on **Ubuntu** `20.04` `x86_64`, **GCC** `5.1+`, **Clang** `3.4.1+`, `Intel C 17.0+`, **TinyC** `0.9.27`.
 
 Tested on **macOS** `11.2` `arm64` with **Apple Clang** `12.0.0`.
 
