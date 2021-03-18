@@ -18,7 +18,7 @@ int main() {
 	// char/byte are handled with extra love
 	unsigned char byte = 222;
 	char ch = 'A';
-	print(byte, ch)
+	print(byte, ch);
 
 	// you can setup your own colors
 	// arguments are: (normal, number, string, hex, fractional)
@@ -29,5 +29,5 @@ int main() {
 	__print_enable_color = 0;
 
 	// printing to fd is possible with fprintf
-	fprint(stderr, "Warning:", 42)
+	fprint(stderr, "Warning:", 42);
 }
