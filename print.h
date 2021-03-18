@@ -164,12 +164,12 @@ void __print_func (FILE *fd, int count, unsigned short types[], ...) {
 
 #define __print_types(a...) __print_types_int(a, (void)0,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1)
 
-#define fprint(fd, a...)({ \
+#define fprint(fd, a...) ({ \
 	int count = __print_count(a); \
 	unsigned short stack[count], *_p = stack + count; \
 	__print_types(a); \
 	__print_func(fd, count, _p, a); \
-});
+})
 
 #define print(a...) fprint(stdout, a)
 
