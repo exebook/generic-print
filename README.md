@@ -37,7 +37,7 @@ Extra information for byte/char:
 ```c
 unsigned char byte = 222;
 char ch = 'A';
-print(byte, ch)
+print(byte, ch);
 ```
 > output
 > 
